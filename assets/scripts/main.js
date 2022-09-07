@@ -5,5 +5,5 @@ let exercises;
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-
+	loadButton();
 }
