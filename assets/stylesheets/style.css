@@ -3,6 +3,11 @@ body{
 	font-family: "Sitka Text";
 	margin: 200px;
 	text-align: center;
+	color: white;
+	text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
+h1{
+	font-size: 40px;
 }
 #open-quiz{
 	background: white;
