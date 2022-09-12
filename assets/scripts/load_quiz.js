@@ -12,7 +12,7 @@ function open() {
 		const reader = new FileReader();
 		reader.onload = function() {
 			exercises = JSON.parse(reader.result);
-		}
+		};
 		reader.readAsText(fileInput.files[0]);
 	});
 }
