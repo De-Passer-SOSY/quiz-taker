@@ -1,9 +1,4 @@
-function init() {
-	loadButtons();
-}
-
-// Makes the menu buttons functional
-function loadButtons() {
+function initPage() {
 	document.querySelector("#open-quiz-button").addEventListener("click", loadQuiz);
 	document.querySelector("#create-quiz-button").addEventListener("click", createQuiz);
 }

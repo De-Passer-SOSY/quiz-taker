@@ -1,3 +1,7 @@
+function initPage() {
+
+}
+
 // The indices of the exercises that still have to be shown
 let toShow = [];
 
