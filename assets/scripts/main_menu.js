@@ -5,8 +5,6 @@ function loadButtons() {
 }
 
 // Opens the file explorer to open a JSON file
-function open() {
-	const fileInput = document.createElement("input")
 function openQuiz() {
 	const fileInput = document.createElement("input");
 	fileInput.type = "file";

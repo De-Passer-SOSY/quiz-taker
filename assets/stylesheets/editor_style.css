@@ -1,0 +1,14 @@
+#create-exercise-button{
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 5px;
+	border-width: 0px;
+	font-size: 15px;
+	font-family: "Sitka Text";
+	font-weight: bold;
+	background: goldenrod;
+	color: white;
+}
+#create-exercise-button:hover{
+	background: darkgoldenrod;
+}
