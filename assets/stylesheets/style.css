@@ -26,3 +26,17 @@ h1{
 #open-quiz-button:hover{
 	background: black;
 }
+#create-quiz-button{
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 5px;
+	border-width: 0px;
+	font-size: 15px;
+	font-family: "Sitka Text";
+	font-weight: bold;
+	background: #b8986f;
+	color: white;
+}
+#create-quiz-button:hover{
+	background: #735e44;
+}
