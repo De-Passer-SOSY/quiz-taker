@@ -1,11 +1,15 @@
+function init() {
+	loadButtons();
+}
+
 // Makes the menu buttons functional
 function loadButtons() {
-	document.querySelector("#open-quiz-button").addEventListener("click", openQuiz);
+	document.querySelector("#open-quiz-button").addEventListener("click", loadQuiz);
 	document.querySelector("#create-quiz-button").addEventListener("click", createQuiz);
 }
 
 // Opens the file explorer to open a JSON file
-function openQuiz() {
+function loadQuiz() {
 	const fileInput = document.createElement("input");
 	fileInput.type = "file";
 	fileInput.click();
@@ -13,7 +17,7 @@ function openQuiz() {
 	fileInput.addEventListener("change", function() {
 		const reader = new FileReader();
 		reader.onload = function() {
-			exercises = JSON.parse(reader.result);
+			exercises = JSON.parse("" + reader.result);
 		};
 		reader.readAsText(fileInput.files[0]);
 	});
