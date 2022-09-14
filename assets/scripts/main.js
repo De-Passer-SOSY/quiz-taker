@@ -8,7 +8,7 @@ let toShow = [];
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-	loadButton();
+	loadButtons();
 }
 
 // Clears and refills the "toShow" list
