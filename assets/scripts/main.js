@@ -2,7 +2,7 @@
 
 let exercises;
 
-// The indices of the exercises that are to be shown
+// The indices of the exercises that still have to be shown
 let toShow = [];
 
 document.addEventListener("DOMContentLoaded", init);
@@ -11,6 +11,7 @@ function init() {
 	loadButton();
 }
 
+// Clears and refills the "toShow" list
 function openQuiz() {
 	if(!exercises) {
 		alert("No quiz loaded");

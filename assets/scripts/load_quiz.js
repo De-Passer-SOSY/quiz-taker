@@ -1,8 +1,9 @@
-
+// Makes the "open quiz" button functional
 function loadButton() {
 	document.querySelector("#open-quiz-button").addEventListener("click", open);
 }
 
+// Opens the file explorer to open a JSON file
 function open() {
 	const fileInput = document.createElement("input")
 	fileInput.type = "file";
