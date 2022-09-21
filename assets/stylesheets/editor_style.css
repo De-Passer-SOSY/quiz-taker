@@ -1,4 +1,4 @@
-#create-exercise-button{
+#create-exercise-button, #save-button{
 	margin-top: 20px;
 	padding: 10px;
 	border-radius: 5px;
@@ -9,7 +9,7 @@
 	background: goldenrod;
 	color: white;
 }
-#create-exercise-button:hover{
+#create-exercise-button:hover, #save-button:hover{
 	background: darkgoldenrod;
 }
 #exercises-list{
@@ -36,4 +36,8 @@ input, textarea{
 	border-width: 1px;
 	border-color: black;
 	border-radius: 8px;
+}
+textarea{
+	width: 500px;
+	height: 200px;
 }

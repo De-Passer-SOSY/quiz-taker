@@ -27,7 +27,8 @@ function editExercise(index) {
 function createExercise() {
 	exercises.push({
 		question: "New question",
-		answers: [],
+		given: "",
+		correct: "",
 	});
 	localStorage.setItem("quiz", JSON.stringify(exercises));
 	loadExercisesList();
