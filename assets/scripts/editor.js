@@ -4,11 +4,24 @@ function initPage() {
 }
 
 function loadExercisesList() {
-	const exercisesList = document.querySelector("#exercises-list");
+	let exercisesHTML = "";
+	let index = 0;
 	for(const exercise of exercises) {
 		const question = exercise.question;
-		exercisesList.innerHTML += `<li>${question}</li>`;
+		exercisesHTML += "<li>" + question + " | <button id='exercise-" + index + "'>Edit</button></li>";
+		index++;
 	}
+	document.querySelector("#exercises-list").innerHTML = exercisesHTML;
+	for(let i = 0; i < exercises.length; i++) {
+		document.querySelector("#exercise-" + i).addEventListener("click", function () {
+			editExercise(i);
+		});
+	}
+}
+
+function editExercise(index) {
+	alert("Editing exercise " + (index + 1));
+	localStorage.setItem("editing-exercise", "" + index);
 }
 
 function createExercise() {

@@ -12,3 +12,21 @@
 #create-exercise-button:hover{
 	background: darkgoldenrod;
 }
+#exercises-list{
+	margin-left: 30%;
+	margin-right: 30%;
+}
+li button{
+	background: transparent;
+	border-width: 0px;
+	font-size: 15px;
+	font-family: "Sitka Text";
+	font-weight: bold;
+	color: white;
+	text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+}
+li button:hover {
+	background: #f1d5b2;
+	color: black;
+	text-shadow: none;
+}

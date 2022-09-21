@@ -22,5 +22,6 @@ function createQuiz() {
 	if(exercises === null || confirm("There is already a quiz loaded. Do you want to close it? The quiz will not be saved.")) {
 		exercises = [];
 	}
+	localStorage.setItem("quiz", JSON.stringify(exercises));
 	window.open("quiz_editor.html", "_self");
 }
