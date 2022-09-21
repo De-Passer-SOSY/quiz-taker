@@ -29,5 +29,6 @@ function createExercise() {
 		question: "New question",
 		answers: [],
 	});
+	localStorage.setItem("quiz", JSON.stringify(exercises));
 	loadExercisesList();
 }
