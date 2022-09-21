@@ -20,8 +20,8 @@ function loadExercisesList() {
 }
 
 function editExercise(index) {
-	alert("Editing exercise " + (index + 1));
 	localStorage.setItem("editing-exercise", "" + index);
+	window.open("exercise_editor.html", "_self");
 }
 
 function createExercise() {

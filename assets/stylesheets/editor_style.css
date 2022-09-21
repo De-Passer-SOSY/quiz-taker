@@ -30,3 +30,10 @@ li button:hover {
 	color: black;
 	text-shadow: none;
 }
+input, textarea{
+	margin: 5px;
+	padding: 5px;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 8px;
+}
