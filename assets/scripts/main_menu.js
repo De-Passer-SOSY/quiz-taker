@@ -16,6 +16,11 @@ function loadQuiz() {
 		};
 		reader.readAsText(fileInput.files[0]);
 	});
+
+	localStorage.setItem("quiz_stage", "start");
+	localStorage.setItem("answers", JSON.stringify([]));
+
+	window.open("quiz_taker.html", "_self");
 }
 
 function createQuiz() {
