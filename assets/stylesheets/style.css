@@ -26,11 +26,6 @@ h1{
 #open-quiz-button:hover{
 	background: black;
 }
-#save-quiz-button{
-	padding: 5px;
-	margin-bottom: 20px;
-	border-radius: 5px;
-}
 .normal-button{
 	margin-top: 20px;
 	padding: 10px;

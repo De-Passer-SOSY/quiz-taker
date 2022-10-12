@@ -1,6 +1,7 @@
 function initPage() {
 	loadExercisesList();
 	document.querySelector("#create-exercise-button").addEventListener("click", createExercise);
+	document.querySelector("#save-quiz-button").addEventListener("click", saveQuiz);
 }
 
 function loadExercisesList() {
@@ -44,4 +45,17 @@ function createExercise() {
 	});
 	localStorage.setItem("quiz", JSON.stringify(exercises));
 	loadExercisesList();
+}
+
+function saveQuiz() {
+	const exportData = {
+		exercises: exercises,
+	};
+
+	const blob = new Blob([JSON.stringify(exportData)], {type: "text/plain"});
+
+	const download = document.createElement("a");
+	download.download = "Quiz.json";
+	download.href = window.URL.createObjectURL(blob);
+	download.click();
 }
