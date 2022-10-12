@@ -16,8 +16,8 @@ h1{
 #open-quiz-button{
 	padding: 20px;
 	border-radius: 10px;
-	border-width: 0px;
 	font-size: 18px;
+	border-width: 0px;
 	font-family: "Sitka Text";
 	font-weight: bold;
 	background: mediumseagreen;
@@ -26,7 +26,12 @@ h1{
 #open-quiz-button:hover{
 	background: black;
 }
-#create-quiz-button{
+#save-quiz-button{
+	padding: 5px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+.normal-button{
 	margin-top: 20px;
 	padding: 10px;
 	border-radius: 5px;
@@ -37,7 +42,7 @@ h1{
 	background: #b8986f;
 	color: white;
 }
-#create-quiz-button:hover{
+.normal-button:hover{
 	background: #735e44;
 }
 a{
