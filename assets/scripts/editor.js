@@ -1,4 +1,7 @@
 function initPage() {
+	localStorage.removeItem("toShow")
+	localStorage.removeItem("answers");
+
 	loadExercisesList();
 	document.querySelector("#create-exercise-button").addEventListener("click", createExercise);
 	document.querySelector("#save-quiz-button").addEventListener("click", saveQuiz);
@@ -7,7 +10,7 @@ function initPage() {
 function loadExercisesList() {
 	let exercisesHTML = "";
 	let index = 0;
-	for(const exercise of exercises) {
+	for (const exercise of exercises) {
 		const question = exercise.question;
 		exercisesHTML += "<li>" + question + " | <button id='exercise-" + index + "'>Edit</button><button id='delete-" + index + "'>X</button></li>";
 		index++;

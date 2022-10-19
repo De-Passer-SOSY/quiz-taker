@@ -5,6 +5,9 @@ function initPage() {
 
 // Opens the file explorer to open a JSON file
 function loadQuiz() {
+	localStorage.removeItem("toShow")
+	localStorage.removeItem("answers");
+
 	const fileInput = document.createElement("input");
 	fileInput.type = "file";
 	fileInput.click();
@@ -12,15 +15,17 @@ function loadQuiz() {
 	fileInput.addEventListener("change", function() {
 		const reader = new FileReader();
 		reader.onload = function() {
-			exercises = JSON.parse("" + reader.result);
+			const loadedObject = JSON.parse("" + reader.result);
+
+			exercises = loadedObject.exercises;
+			localStorage.setItem("quiz", JSON.stringify(exercises));
+
+			localStorage.setItem("answers", JSON.stringify([]));
+			window.open("quiz_taker.html", "_self");
 		};
 		reader.readAsText(fileInput.files[0]);
 	});
 
-	localStorage.setItem("quiz_stage", "start");
-	localStorage.setItem("answers", JSON.stringify([]));
-
-	window.open("quiz_taker.html", "_self");
 }
 
 function createQuiz() {

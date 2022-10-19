@@ -13,7 +13,7 @@ h1{
 	padding: 50px;
 	border-radius: 20px;
 }
-#open-quiz-button{
+.green-button{
 	padding: 20px;
 	border-radius: 10px;
 	font-size: 18px;
@@ -23,7 +23,7 @@ h1{
 	background: mediumseagreen;
 	color: white;
 }
-#open-quiz-button:hover{
+.green-button:hover{
 	background: black;
 }
 .normal-button{
