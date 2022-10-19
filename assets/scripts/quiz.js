@@ -56,13 +56,45 @@ function showStartScreen() {
 
 function showExercise() {
 	const main = document.querySelector("main");
-	const exercise = exercises[0];
+	const exercise = exercises[toShow[0]];
 	main.innerHTML = "<button id='quit-button' class='normal-button'>Quit</button><br>" +
 		"<p>" + exercise.question + "</p>" +
 		"<h2>" + exercise.given + "</h2>" +
 		"<form id='exercise-form'>" +
 		"<textarea id='solution-input'></textarea><br>" +
 		"<input type='submit' class='green-button' value='Check'>" +
-		"</form>";
+		"</form>" +
+		"<div id='feedback'></div>";
 	document.querySelector("#quit-button").addEventListener("click", quitQuiz);
+	document.querySelector("#exercise-form").addEventListener("submit", check);
+}
+
+function check(e) {
+	e.preventDefault();
+
+	const givenSolution = document.querySelector("#solution-input").value;
+
+	const correctSolutions = exercises[toShow[0]].correct.split("\n");
+
+	const isCorrect = givenSolution !== "" && correctSolutions.includes(givenSolution);
+
+	const feedbackElement = document.querySelector("#feedback");
+	if(isCorrect) {
+		feedbackElement.innerHTML = "<h3 class='correct'>Correct!</h3>" +
+			"<button id='next-exercise-button' class='green-button'>Next exercise</button>";
+	}else{
+		const element = document.createElement("b");
+		element.textContent = correctSolutions[0];
+
+		feedbackElement.innerHTML = "<h3 class='incorrect'>Incorrect</h3><p>The correct answer was '<b>" + element.innerHTML + "</b>'.</p>" +
+			"<button id='next-exercise-button' class='normal-button'>Next exercise</button>";
+	}
+	document.querySelector("#next-exercise-button").addEventListener("click", nextExercise);
+
+}
+
+function nextExercise() {
+	toShow.splice(0, 1);
+	localStorage.setItem("toShow", JSON.stringify(toShow));
+	initPage();
 }

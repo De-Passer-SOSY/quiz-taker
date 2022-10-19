@@ -19,7 +19,7 @@ function loadQuiz() {
 
 			exercises = loadedObject.exercises;
 			localStorage.setItem("quiz", JSON.stringify(exercises));
-			
+
 			window.open("quiz_taker.html", "_self");
 		};
 		reader.readAsText(fileInput.files[0]);

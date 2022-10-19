@@ -5,3 +5,9 @@ textarea{
 	width: 500px;
 	height: 150px;
 }
+.correct{
+	color: #00ff22;
+}
+.incorrect{
+	color: #ff0000;
+}
