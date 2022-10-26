@@ -56,15 +56,25 @@ function showStartScreen() {
 
 function showExercise() {
 	const main = document.querySelector("main");
+	main.innerHTML = "<button id='quit-button' class='normal-button'>Quit</button><br>";
+
 	const exercise = exercises[toShow[0]];
-	main.innerHTML = "<button id='quit-button' class='normal-button'>Quit</button><br>" +
-		"<p>" + exercise.question + "</p>" +
-		"<h2>" + exercise.given + "</h2>" +
-		"<form id='exercise-form'>" +
+
+	const questionElement = document.createElement("h2");
+	main.appendChild(questionElement);
+	questionElement.textContent = exercise.question;
+
+	for(const line of exercise.given.split("\n")) {
+		const givenElement = document.createElement("p");
+		main.appendChild(givenElement);
+		givenElement.textContent = line;
+	}
+
+	main.innerHTML += "<form id='exercise-form'>" +
 		"<textarea id='solution-input'></textarea><br>" +
 		"<input type='submit' class='green-button' value='Check'>" +
-		"</form>" +
-		"<div id='feedback'></div>";
+		"</form>" +"<div id='feedback'></div>";
+
 	document.querySelector("#quit-button").addEventListener("click", quitQuiz);
 	document.querySelector("#exercise-form").addEventListener("submit", check);
 }
@@ -84,6 +94,7 @@ function check(e) {
 			"<button id='next-exercise-button' class='green-button'>Next exercise</button>";
 	}else{
 		const element = document.createElement("b");
+		feedbackElement.appendChild(element);
 		element.textContent = correctSolutions[0];
 
 		feedbackElement.innerHTML = "<h3 class='incorrect'>Incorrect</h3><p>The correct answer was '<b>" + element.innerHTML + "</b>'.</p>" +
