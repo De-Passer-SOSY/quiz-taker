@@ -1,6 +1,5 @@
 function initPage() {
-	localStorage.removeItem("toShow")
-	localStorage.removeItem("answers");
+	localStorage.removeItem("editing-exercise")
 
 	loadExercisesList();
 	document.querySelector("#create-exercise-button").addEventListener("click", createExercise);

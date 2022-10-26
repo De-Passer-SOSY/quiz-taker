@@ -6,7 +6,7 @@ function initPage() {
 	if(toShow === null) {
 		showStartScreen();
 	}else if(toShow.length === 0) {
-
+		quizFinish();
 	}else {
 		showExercise();
 	}
@@ -40,10 +40,9 @@ function openQuizEditor() {
 	window.open("quiz_editor.html", "_self");
 }
 
-function quitQuiz() {
-	localStorage.removeItem("answers");
+function clearStorage() {
 	localStorage.removeItem("toShow");
-	initPage();
+	localStorage.removeItem("correction");
 }
 
 function showStartScreen() {
@@ -79,6 +78,7 @@ function showExercise() {
 	document.querySelector("#exercise-form").addEventListener("submit", check);
 }
 
+let correct = false;
 function check(e) {
 	e.preventDefault();
 
@@ -86,26 +86,92 @@ function check(e) {
 
 	const correctSolutions = exercises[toShow[0]].correct.split("\n");
 
-	const isCorrect = givenSolution !== "" && correctSolutions.includes(givenSolution);
+	correct = givenSolution !== "" && correctSolutions.includes(givenSolution);
 
 	const feedbackElement = document.querySelector("#feedback");
-	if(isCorrect) {
+	if(correct) {
 		feedbackElement.innerHTML = "<h3 class='correct'>Correct!</h3>" +
 			"<button id='next-exercise-button' class='green-button'>Next exercise</button>";
 	}else{
-		const element = document.createElement("b");
-		feedbackElement.appendChild(element);
-		element.textContent = correctSolutions[0];
-
-		feedbackElement.innerHTML = "<h3 class='incorrect'>Incorrect</h3><p>The correct answer was '<b>" + element.innerHTML + "</b>'.</p>" +
+		feedbackElement.innerHTML = "<h3 class='incorrect'>Incorrect</h3><p>The correct answer was '<b id='show-correct-answer'></b>'.</p>" +
 			"<button id='next-exercise-button' class='normal-button'>Next exercise</button>";
+
+		const element = document.querySelector("#show-correct-answer");
+		element.textContent = correctSolutions[0];
 	}
+
+	updateCorrection();
+
 	document.querySelector("#next-exercise-button").addEventListener("click", nextExercise);
 
+}
+
+function updateCorrection() {
+	let correctionJSON = localStorage.getItem("correction");
+
+	let correction = {
+		correct: 0,
+		done: 0,
+	};
+	if(correctionJSON !== null) {
+		correction = JSON.parse(correctionJSON);
+	}
+
+	if(correct) {
+		correction.correct += 1;
+	}
+	correction.done += 1;
+
+	localStorage.setItem("correction", JSON.stringify(correction));
 }
 
 function nextExercise() {
 	toShow.splice(0, 1);
 	localStorage.setItem("toShow", JSON.stringify(toShow));
+	initPage();
+}
+
+function quizFinish() {
+	const main = document.querySelector("main");
+
+	main.innerHTML = "<h1>Finish!</h1>" +
+		"<button id='play-again-button' class='green-button'>Play again</button><br>" +
+		"<button id='quit-quiz-button' class='normal-button'>Close</button>";
+
+	const correction = JSON.parse(localStorage.getItem("correction"));
+	main.innerHTML += "<h2>Feedback</h2><p>" + getFeedback(correction) + "</p>";
+
+	document.querySelector("#play-again-button").addEventListener("click", playAgain);
+	document.querySelector("#quit-quiz-button").addEventListener("click", quitQuiz);
+}
+
+function getFeedback(correction) {
+	const correct = correction.correct;
+	const done = correction.done;
+
+	const ratio = correct / done;
+
+	const score = "<b>" + correct + "/" + done + "</b> | " + Math.floor(ratio * 100) + "% - ";
+	if(ratio === 1) {
+		return score + "Perfect!"
+	}else if(ratio > 0.9) {
+		return score + "You did great!"
+	}else if(ratio > 0.7) {
+		return score + "You did well!"
+	}else if(ratio > 0.5) {
+		return score + "You passed! But there's still some work needed..."
+	}else {
+		return score + "Still more work needed.";
+	}
+}
+
+function playAgain() {
+	clearStorage();
+	startQuiz();
+	initPage();
+}
+
+function quitQuiz() {
+	clearStorage();
 	initPage();
 }
