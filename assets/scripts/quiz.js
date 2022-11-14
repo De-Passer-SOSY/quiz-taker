@@ -2,10 +2,11 @@ function initPage() {
 	document.querySelector("main").innerHTML = "";
 
 	toShow = JSON.parse(localStorage.getItem("toShow"));
+	repeat = JSON.parse(localStorage.getItem("repeat"));
 
 	if(toShow === null) {
 		showStartScreen();
-	}else if(toShow.length === 0) {
+	}else if(toShow.length === 0 && repeat.length === 0) {
 		quizFinish();
 	}else {
 		showExercise();
@@ -14,9 +15,12 @@ function initPage() {
 
 // The indices of the exercises that still have to be shown
 let toShow = [];
+let repeat = [];
 
 // Clears and refills the "toShow" list
 function startQuiz() {
+	clearStorage();
+
 	if(!exercises) {
 		alert("No quiz loaded");
 		return;
@@ -32,6 +36,7 @@ function startQuiz() {
 	}
 
 	localStorage.setItem("toShow", JSON.stringify(toShow));
+	localStorage.setItem("repeat", JSON.stringify([]));
 
 	initPage();
 }
@@ -42,6 +47,7 @@ function openQuizEditor() {
 
 function clearStorage() {
 	localStorage.removeItem("toShow");
+	localStorage.removeItem("repeat");
 	localStorage.removeItem("correction");
 }
 
@@ -57,7 +63,16 @@ function showExercise() {
 	const main = document.querySelector("main");
 	main.innerHTML = "<button id='quit-button' class='normal-button'>Quit</button><br>";
 
-	const exercise = exercises[toShow[0]];
+	const isRevision = toShow.length === 0;
+
+	let exercise;
+	if(isRevision) {
+		exercise = exercises[repeat[0]];
+	}else{
+		exercise = exercises[toShow[0]];
+	}
+
+	if(isRevision) main.innerHTML += "<p>Revision exercise</p>";
 
 	const questionElement = document.createElement("h2");
 	main.appendChild(questionElement);
@@ -84,7 +99,14 @@ function check(e) {
 
 	const givenSolution = document.querySelector("#solution-input").value;
 
-	const correctSolutions = exercises[toShow[0]].correct.split("\n");
+	let exerciseIndex;
+	if(toShow.length === 0) {
+		exerciseIndex = toShow[0];
+	}else{
+		exerciseIndex = repeat[0];
+	}
+
+	const correctSolutions = exercises[exerciseIndex].correct.split("\n");
 
 	correct = givenSolution !== "" && correctSolutions.includes(givenSolution);
 
@@ -98,6 +120,10 @@ function check(e) {
 
 		const element = document.querySelector("#show-correct-answer");
 		element.textContent = correctSolutions[0];
+
+		// The exercise is to be repeated.
+		if(!repeat.includes(exerciseIndex)) repeat.push(exerciseIndex);
+		localStorage.setItem("repeat", JSON.stringify(repeat));
 	}
 
 	updateCorrection();
@@ -126,8 +152,15 @@ function updateCorrection() {
 }
 
 function nextExercise() {
-	toShow.splice(0, 1);
-	localStorage.setItem("toShow", JSON.stringify(toShow));
+	if(toShow.length > 0) {
+		toShow.splice(0, 1);
+		localStorage.setItem("toShow", JSON.stringify(toShow));
+	}else{
+		// The completed exercise must be a revision exercise
+		repeat.splice(0, 1);
+		localStorage.setItem("repeat", JSON.stringify(repeat));
+	}
+
 	initPage();
 }
 
@@ -166,7 +199,6 @@ function getFeedback(correction) {
 }
 
 function playAgain() {
-	clearStorage();
 	startQuiz();
 	initPage();
 }
