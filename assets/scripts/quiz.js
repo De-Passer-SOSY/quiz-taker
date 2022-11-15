@@ -101,9 +101,9 @@ function check(e) {
 
 	let exerciseIndex;
 	if(toShow.length === 0) {
-		exerciseIndex = toShow[0];
-	}else{
 		exerciseIndex = repeat[0];
+	}else{
+		exerciseIndex = toShow[0];
 	}
 
 	const correctSolutions = exercises[exerciseIndex].correct.split("\n");
