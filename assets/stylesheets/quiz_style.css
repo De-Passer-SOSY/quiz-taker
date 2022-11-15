@@ -1,9 +1,13 @@
 #start-quiz-button{
 	margin: 50px;
 }
-textarea{
+#solution-input{
+	margin: 30px;
+	padding: 10px;
+	border-radius: 10px;
+	border-width: 0px;
 	width: 500px;
-	height: 150px;
+	font-size: 18px;
 }
 .correct{
 	color: #00ff22;

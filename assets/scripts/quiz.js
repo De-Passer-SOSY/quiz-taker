@@ -83,9 +83,8 @@ function showExercise() {
 		main.appendChild(givenElement);
 		givenElement.textContent = line;
 	}
-
 	main.innerHTML += "<form id='exercise-form'>" +
-		"<textarea id='solution-input'></textarea><br>" +
+		"<input type='text' id='solution-input'><br>" +
 		"<input type='submit' class='green-button' value='Check'>" +
 		"</form>" +"<div id='feedback'></div>";
 
