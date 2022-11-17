@@ -19,6 +19,7 @@ function loadQuiz() {
 
 			exercises = loadedObject.exercises;
 			localStorage.setItem("quiz", JSON.stringify(exercises));
+			localStorage.setItem("quizTitle", loadedObject.title);
 
 			window.open("quiz_taker.html", "_self");
 		};
@@ -32,5 +33,6 @@ function createQuiz() {
 		exercises = [];
 	}
 	localStorage.setItem("quiz", JSON.stringify(exercises));
+	localStorage.setItem("quizTitle", "");
 	window.open("quiz_editor.html", "_self");
 }

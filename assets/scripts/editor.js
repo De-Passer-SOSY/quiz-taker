@@ -4,6 +4,7 @@ function initPage() {
 	loadExercisesList();
 	document.querySelector("#create-exercise-button").addEventListener("click", createExercise);
 	document.querySelector("#save-quiz-button").addEventListener("click", saveQuiz);
+	document.querySelector("#quiz-title").textContent = localStorage.getItem("quizTitle");
 }
 
 function loadExercisesList() {
@@ -51,6 +52,7 @@ function createExercise() {
 
 function saveQuiz() {
 	const exportData = {
+		title: document.querySelector("#quiz-title").value,
 		exercises: exercises,
 	};
 

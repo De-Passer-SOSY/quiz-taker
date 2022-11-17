@@ -53,7 +53,13 @@ function clearStorage() {
 
 function showStartScreen() {
 	const main = document.querySelector("main");
-	main.innerHTML = "<button id='edit-quiz-button' class='normal-button'>Edit quiz</button><br>" +
+	main.innerHTML = "";
+
+	const title = document.createElement("h1");
+	title.textContent = localStorage.getItem("quizTitle");
+	main.appendChild(title);
+
+	main.innerHTML += "<button id='edit-quiz-button' class='normal-button'>Edit quiz</button><br>" +
 		"<button id='start-quiz-button' class='green-button'>Start quiz</button>";
 	document.querySelector("#edit-quiz-button").addEventListener("click", openQuizEditor);
 	document.querySelector("#start-quiz-button").addEventListener("click", startQuiz);
