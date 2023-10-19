@@ -8,7 +8,7 @@ body{
 h1{
 	font-size: 40px;
 }
-#open-quiz{
+div{
 	background: white;
 	padding: 50px;
 	border-radius: 20px;

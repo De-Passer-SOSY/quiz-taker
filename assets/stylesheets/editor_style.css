@@ -46,3 +46,6 @@ textarea{
 	border-radius: 15px;
 	width: 500px;
 }
+input, label{
+	display: block;
+}

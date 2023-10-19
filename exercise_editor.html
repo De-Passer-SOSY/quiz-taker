@@ -9,22 +9,25 @@
 	<script src="assets/scripts/exercise_editor.js"></script>
 </head>
 <body>
+<header>
 	<nav>
 		<a href="quiz_editor.html">Exercises list</a>
 	</nav>
+</header>
+<main>
 	<h2>Edit exercise</h2>
 	<form id="edit-exercise-form">
 		<label for="question">Question:</label>
 		<input id="question" type="text">
-		<br>
+
 		<label for="given">(Optional) Given:</label>
-		<br>
 		<textarea id="given"></textarea>
-		<br>
+
 		<label for="correct">Correct answers:</label><br>
 		<textarea id="correct"></textarea>
-		<br>
+
 		<input id="save-button" type="submit" value="Save">
 	</form>
+</main>
 </body>
 </html>
