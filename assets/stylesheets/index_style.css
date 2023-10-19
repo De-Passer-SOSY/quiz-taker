@@ -5,3 +5,9 @@ main{
 h1{
 	font-size: 2.5rem;
 }
+
+div{
+	background: white;
+	padding: 2rem;
+	border-radius: 1.25rem;
+}

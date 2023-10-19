@@ -6,10 +6,15 @@ body{
 	text-shadow: 0.1875rem 0.1875rem rgba(0, 0, 0, 0.5);
 }
 
-div{
-	background: white;
-	padding: 3.125rem;
-	border-radius: 1.25rem;
+input[type=text], textarea{
+	width: 100%;
+	min-width: 31.25rem;
+
+	margin: 1.875rem;
+	padding: 0.625rem;
+	border-radius: 0.625rem;
+	border-width: 0;
+	font-size: 1.125rem;
 }
 
 button, input[type=submit]{
@@ -25,6 +30,7 @@ button, input[type=submit], a{
 
 .green-button{
 	padding: 1.25rem;
+	margin: 2rem;
 	border-radius: 0.625rem;
 	font-size: 1.125rem;
 	font-weight: bold;
