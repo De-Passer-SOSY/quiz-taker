@@ -12,14 +12,14 @@ div{
 	border-radius: 1.25rem;
 }
 
-button{
+button, input[type=submit]{
 	font-family: "Sitka Text", serif;
 	border-width: 0;
 	font-weight: bold;
 	font-size: 0.9375rem;
 }
 
-button, a{
+button, input[type=submit], a{
 	color: white;
 }
 
