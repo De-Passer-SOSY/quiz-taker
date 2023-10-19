@@ -1,45 +1,48 @@
 body{
 	background: burlywood;
-	font-family: "Sitka Text";
+	font-family: "Sitka Text", serif;
 	text-align: center;
 	color: white;
-	text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+	text-shadow: 0.1875rem 0.1875rem rgba(0, 0, 0, 0.5);
 }
+
 h1{
-	font-size: 40px;
+	font-size: 2.5rem;
 }
+
 div{
 	background: white;
-	padding: 50px;
-	border-radius: 20px;
+	padding: 3.125rem;
+	border-radius: 1.25rem;
 }
+
+button{
+	font-family: "Sitka Text", serif;
+	border-width: 0;
+	font-weight: bold;
+}
+
+button, a{
+	color: white;
+}
+
 .green-button{
-	padding: 20px;
-	border-radius: 10px;
-	font-size: 18px;
-	border-width: 0px;
-	font-family: "Sitka Text";
+	padding: 1.25rem;
+	border-radius: 0.625rem;
+	font-size: 1.125rem;
 	font-weight: bold;
 	background: mediumseagreen;
-	color: white;
 }
 .green-button:hover{
 	background: black;
 }
 .normal-button{
-	margin-top: 20px;
-	padding: 10px;
-	border-radius: 5px;
-	border-width: 0px;
-	font-size: 15px;
-	font-family: "Sitka Text";
-	font-weight: bold;
+	margin-top: 1.25rem;
+	padding: 0.625rem;
+	border-radius: 0.3125rem;
+	font-size: 0.9375rem;
 	background: #b8986f;
-	color: white;
 }
 .normal-button:hover{
 	background: #735e44;
-}
-a{
-	color: white;
 }
