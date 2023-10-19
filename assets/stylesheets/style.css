@@ -6,10 +6,6 @@ body{
 	text-shadow: 0.1875rem 0.1875rem rgba(0, 0, 0, 0.5);
 }
 
-h1{
-	font-size: 2.5rem;
-}
-
 div{
 	background: white;
 	padding: 3.125rem;
@@ -20,6 +16,7 @@ button{
 	font-family: "Sitka Text", serif;
 	border-width: 0;
 	font-weight: bold;
+	font-size: 0.9375rem;
 }
 
 button, a{
@@ -36,13 +33,24 @@ button, a{
 .green-button:hover{
 	background: black;
 }
-.normal-button{
+.normal-button, .gold-button{
 	margin-top: 1.25rem;
 	padding: 0.625rem;
 	border-radius: 0.3125rem;
-	font-size: 0.9375rem;
+}
+
+.normal-button{
 	background: #b8986f;
 }
+
 .normal-button:hover{
 	background: #735e44;
+}
+
+.gold-button{
+	background: goldenrod;
+}
+
+.gold-button:hover{
+	background: darkgoldenrod;
 }
