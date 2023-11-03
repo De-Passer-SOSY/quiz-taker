@@ -22,8 +22,8 @@ li button:hover {
 }
 
 #quiz-title{
-	font-size: 18px;
-	border-radius: 15px;
+	font-size: 1.125rem;
+	border-radius: 0.9375rem;
 	width: 100%;
 }
 
