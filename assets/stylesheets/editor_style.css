@@ -1,12 +1,6 @@
-#exercises-list{
-	margin-left: 30%;
-	margin-right: 30%;
-}
-
-input[type=text], textarea{
-	height: 12rem;
-	border-color: black;
-	border-radius: 0.5rem;
+textarea{
+	height: 10rem;
+	resize: vertical;
 }
 
 li button{
@@ -21,12 +15,13 @@ li button:hover {
 	text-shadow: none;
 }
 
+
+input, label{
+	display: block;
+}
+
 #quiz-title{
 	font-size: 1.125rem;
 	border-radius: 0.9375rem;
-	width: 100%;
-}
-
-input, label{
-	display: inline-block;
+	width: 80%;
 }
